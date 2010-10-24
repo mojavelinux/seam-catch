@@ -64,7 +64,7 @@ public class ExceptionHandlerPrototypeTest
                // try to add
                //, new IllegalStateExceptionHandler()
             )
-            .whenSatisfiesActivationCriteria(new CurrentViewIdActivation("*"))
+            .whenSatisfiesCriteria(new CurrentViewIdActivation("*"))
          .onCatching(LinkageError.class)
             .handleWith(
                new LoggingExceptionHandler(Level.WARNING)

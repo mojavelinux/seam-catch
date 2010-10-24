@@ -15,7 +15,7 @@ public class ExceptionHandlerChainConfig<T extends Throwable> extends CatchConfi
       this.chain = chain;
    }
    
-   public ExceptionConfig<T> whenSatisfiesActivationCriteria(ExceptionHandlerActivation...activations)
+   public ExceptionConfig<T> whenSatisfiesCriteria(ExceptionHandlerActivation...activations)
    {
       chain.addAll(activations);
       return exceptionConfig;
