@@ -93,6 +93,9 @@ public class CatchExecutor
       }
    }
    
+   // FIXME this is clearly going to be a problem since the handlers and activators are effectively shared
+   // by all requests...we need to inject once when setting up...and make it clear that dependent-scope injection
+   // is potentially dangerous.
    @SuppressWarnings("unchecked")
    protected CreationalContext<Object> injectNonContextualInstance(Object instance, BeanManager beanManager)
    {
