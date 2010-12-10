@@ -35,6 +35,7 @@ import org.jboss.seam.exception.control.test.handler.DecoratorAsHandler;
 import org.jboss.seam.exception.control.test.handler.ExtensionExceptionHandler;
 import org.jboss.seam.exception.control.test.handler.InterceptorAsHandler;
 import org.jboss.seam.exception.control.test.handler.PretendInterceptorBinding;
+import org.jboss.seam.exception.control.test.handler.StereotypedExceptionHandler;
 import org.jboss.seam.exception.control.test.qualifier.ArquillianLiteral;
 import org.jboss.seam.exception.control.test.qualifier.CatchQualifierLiteral;
 import org.jboss.shrinkwrap.api.Archive;
@@ -51,7 +52,7 @@ public class ExtensionTest
    public static Archive<?> createTestArchive()
    {
       return ShrinkWrap.create(JavaArchive.class)
-         .addClasses(CatchExtension.class, ExtensionExceptionHandler.class,
+         .addClasses(CatchExtension.class, ExtensionExceptionHandler.class, StereotypedExceptionHandler.class,
                InterceptorAsHandler.class, PretendInterceptorBinding.class, DecoratorAsHandler.class)
          .addManifestResource(new StringAsset(
                "<beans>" +
@@ -82,7 +83,7 @@ public class ExtensionTest
    @Test
    public void assertNumberOfHandlersFoundMatchesExpected()
    {
-      assertEquals(6, extension.getHandlersForExceptionType(IllegalArgumentException.class, bm,
+      assertEquals(7, extension.getHandlersForExceptionType(IllegalArgumentException.class, bm,
                                                             Collections.<Annotation>emptySet()).size());
    }
 
